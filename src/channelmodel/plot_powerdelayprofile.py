@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 from powerdelayprofile import PowerDelayProfile, FFTPowerDelayProfile
 from powerdelayprofile import calculate_vector_signal_energy
 
+
 def plot_power_delay_profile(rms_delay_spread=46.e-9,
                              max_delay_spread=250.e-9):
     for bandwidth in (20.e6, 50.e6, 100.e6):
