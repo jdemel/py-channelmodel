@@ -19,9 +19,11 @@ class PowerDelayProfile(object):
         if shape != 'Exp':
             raise NotImplementedError("Currently only 'Exp' supported!")
         if rms_delay_spread > 1.e-5:
-            raise ValueError('This "{}" value does not make sense'.format(rms_delay_spread))
+            raise ValueError(
+                'This "{}" value does not make sense'.format(rms_delay_spread))
         if max_delay_spread > 1.e-4:
-            raise ValueError('This "{}" value does not make sense'.format(max_delay_spread))
+            raise ValueError(
+                'This "{}" value does not make sense'.format(max_delay_spread))
 
         self._shape = shape
         self._rms_delay_spread = rms_delay_spread
