@@ -1,0 +1,4 @@
+dist/*
+*.pyc
+__pycache__/
+src/py_channelmodel.egg*

@@ -1,0 +1,40 @@
+# pyproject.toml
+
+[build-system]
+requires = ["setuptools>=45.2.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "py-channelmodel"
+version = "1.0.1"
+description = "A wireless communication channel model module for simulations."
+readme = "README.md"
+authors = [{ name = "Johannes Demel", email = "demel@ant.uni-bremen.de" }]
+license = { text = "GPL-3.0-or-later" }
+classifiers = [
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Telecommunications Industry",
+]
+keywords = [
+    "wireless",
+    "simulation",
+    "communication",
+    "channel",
+    "Rayleigh",
+    "AWGN",
+]
+dependencies = ["numpy >= 1.17.0", "scipy >= 1.3.0"]
+requires-python = ">=3.8"
+
+[project.optional-dependencies]
+dev = ["black", "pytest", "bumpver", "build", "twine"]
+gui = ["matplotlib >= 3.1.0"]
+
+[project.urls]
+Homepage = "https://github.com/jdemel/py-channelmodel"
+
+[project.scripts]
+channelmodel = "channelmodel.__main__:main"
