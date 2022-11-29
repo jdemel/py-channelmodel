@@ -9,13 +9,13 @@
 import numpy as np
 import unittest
 
-from channel.awgn import AWGN
-from channel.coherence import ChannelCoherenceRappaport
-from channel.powerdelayprofile import PowerDelayProfile, FFTPowerDelayProfile
-from channel.timevariantchannel import TimeVariantChannel
-from channel.timevariantchannel import CoherentTimeVariantChannel
-from channel.frequencydomainchannel import FrequencyDomainChannel
-from channel import ChannelFactory
+from channelmodel.awgn import AWGN
+from channelmodel.coherence import ChannelCoherenceRappaport
+from channelmodel.powerdelayprofile import PowerDelayProfile, FFTPowerDelayProfile
+from channelmodel.timevariantchannel import TimeVariantChannel
+from channelmodel.timevariantchannel import CoherentTimeVariantChannel
+from channelmodel.frequencydomainchannel import FrequencyDomainChannel
+from channelmodel import ChannelFactory
 
 
 def generate_random_qpsk(n_syms):
@@ -227,7 +227,7 @@ class ChannelFactoryTests(unittest.TestCase):
             for rxa in range(1, 5):
                 cfac = ChannelFactory(self._channel_domain, self._channel_type, self._effective_rate,
                                       rms_delay_spread=self._rms_delay_spread, max_delay_spread=self._max_delay_spread,
-                                      tx_antennas=txa, rx_antennas=rxa)
+                                      tx_antennas=txa, rx_antennas=rxa, equalizer_type='ZF')
                 chan = cfac.create(13.)
                 state = chan.state()
                 print(state)
@@ -238,7 +238,7 @@ class ChannelFactoryTests(unittest.TestCase):
                     state['rms_delay_spread'], self._rms_delay_spread)
                 self.assertAlmostEqual(
                     state['max_delay_spread'], self._max_delay_spread)
-                self.assertAlmostEqual(state['scale'], 1. / np.sqrt(1. * txa))
+                self.assertAlmostEqual(state['scale'], 1. / np.sqrt(1. * txa * rxa))
                 self.assertEqual(chan.tx_antennas(), txa)
                 self.assertEqual(chan.rx_antennas(), rxa)
                 self.assertEqual(chan.channel_dimensions(), (rxa, txa))
@@ -249,7 +249,7 @@ class ChannelFactoryTests(unittest.TestCase):
             for rxa in range(1, 5):
                 cfac = ChannelFactory(self._channel_domain, self._channel_type, self._effective_rate,
                                       rms_delay_spread=self._rms_delay_spread, max_delay_spread=self._max_delay_spread,
-                                      tx_antennas=txa, rx_antennas=rxa)
+                                      tx_antennas=txa, rx_antennas=rxa, equalizer_type='ZF')
                 chan = cfac.create(50.)
                 fadings = chan._fading_channels
 
@@ -258,9 +258,9 @@ class ChannelFactoryTests(unittest.TestCase):
 
                 for c in time_channels:
                     pdp = c._time_variant_channel._pdp
-                    self.assertAlmostEqual(1. / np.sqrt(txa), pdp._scale)
+                    self.assertAlmostEqual(1. / np.sqrt(txa * rxa), pdp._scale)
                     energy = np.sum(np.abs(pdp.taps()) ** 2)
-                    self.assertAlmostEqual(energy, 1. / txa)
+                    self.assertAlmostEqual(energy, 1. / txa / rxa)
 
 
 if __name__ == '__main__':
