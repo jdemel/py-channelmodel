@@ -7,9 +7,8 @@ on:
     types: [published]
 
 jobs:
-  on-success:
+  build-n-publish:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     name: Build and publish Python 🐍 distributions 📦 to PyPI and TestPyPI
 
     steps:
