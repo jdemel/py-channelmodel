@@ -43,7 +43,7 @@ class TimeVariantTests(unittest.TestCase):
             e = np.sum(np.abs(t) ** 2)
             se[i] = e
             t0[i] = t[0]
-        self.assertAlmostEqual(np.mean(se), 1.0, 2)
+        self.assertAlmostEqual(np.mean(se), 1.0, 1)
         self.assertGreaterEqual(np.std(se), .8)
         self.assertGreaterEqual(np.var(se), .7)
         self.assertAlmostEqual(np.mean(t0.real), 0.0, 1)
