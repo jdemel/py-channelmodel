@@ -1,6 +1,5 @@
 {
     "title": "py-channelmodel",
-    "description": "A wireless communication channel model module for simulations.",
     "license": {
         "id": "GPL-3.0-or-later"
     },
@@ -11,6 +10,25 @@
         "AWGN",
         "simulation",
         "channel"
+    ],
+    "related_identifiers": [
+        {
+            "scheme": "doi",
+            "identifier": "10.30420/454862044",
+            "relation": "isDocumentedBy",
+            "resource_type": "publication-article"
+        },
+        {
+            "scheme": "doi",
+            "identifier": "10.1109/VTC2020-Spring48590.2020.9129493",
+            "relation": "isDocumentedBy",
+            "resource_type": "publication-article"
+        },
+        {
+            "identifier": "https://ieeexplore.ieee.org/document/9097115",
+            "relation": "isDocumentedBy",
+            "resource_type": "publication-article"
+        }
     ],
     "creators": [
         {
