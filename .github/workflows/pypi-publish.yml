@@ -2,12 +2,16 @@
 
 name: Publish py-channelmodel to PyPI
 
-on: push
+on: 
+  workflow_run:
+    workflows: [Run py-channelmodel tests]
+    types: [completed]
 
 jobs:
-  build-n-publish:
-    name: Build and publish Python 🐍 distributions 📦 to PyPI and TestPyPI
+  on-success:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    name: Build and publish Python 🐍 distributions 📦 to PyPI and TestPyPI
 
     steps:
     - uses: actions/checkout@v3.1.0
