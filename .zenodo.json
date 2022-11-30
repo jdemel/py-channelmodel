@@ -1,0 +1,22 @@
+{
+    "title": "py-channelmodel",
+    "description": "A wireless communication channel model module for simulations.",
+    "license": {
+        "id": "GPL-3.0-or-later"
+    },
+    "keywords": [
+        "communication",
+        "Python",
+        "Rayleigh",
+        "AWGN",
+        "simulation",
+        "channel"
+    ],
+    "creators": [
+        {
+            "affiliation": "Department of Communications Engineering, University of Bremen, Germany",
+            "name": "Demel, Johannes",
+            "orcid": "0000-0002-5434-7232"
+        }
+    ]
+}

@@ -12,7 +12,14 @@ import scipy.special as sps
 
 
 class ChannelCoherence(object):
-    """docstring for ChannelCoherence"""
+    """ChannelCoherence
+
+    Use this to form a sense of coherence between channel realizations.
+    Refer to Jakes and Rappaport for the theory behind it.
+
+    carrier_freq: Determines the distance after which coherence is presumably gone.
+    velocity: Used to convert a time_delta into a distance_delta.
+    """
 
     def __init__(self, carrier_freq, velocity):
         self._carrier_freq = carrier_freq

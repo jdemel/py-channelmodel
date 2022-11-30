@@ -33,6 +33,17 @@ def get_complex_noise_matrix(shape, sigma=1., dtype=np.complex64):
 
 
 class AWGN(object):
+    """AWGN
+
+    The classical AWGN channel case.
+    This class may be chained to any other block or used stand alone for AWGN simulations.
+
+    The `transmit` method is used to add noise to any input.
+
+    effective_rate and subcarriers control correct scaling
+    such that the overall energy is normalized to 1.0.
+    """
+
     def __init__(self, ebn0_db, effective_rate=1., subcarriers=1):
         self._snr_db = ebn0_db
         self._effective_rate = effective_rate
