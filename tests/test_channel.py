@@ -48,11 +48,11 @@ class TimeVariantTests(unittest.TestCase):
         self.assertAlmostEqual(np.mean(se), 1.0, 2)
         self.assertGreaterEqual(np.std(se), .8)
         self.assertGreaterEqual(np.var(se), .7)
-        self.assertAlmostEqual(np.mean(t0.real), 0.0, 2)
-        self.assertAlmostEqual(np.mean(t0.imag), 0.0, 2)
+        self.assertAlmostEqual(np.mean(t0.real), 0.0, 1)
+        self.assertAlmostEqual(np.mean(t0.imag), 0.0, 1)
         ta = self._pdp.taps()[0].real * np.sqrt(1. / 2.)
-        self.assertAlmostEqual(np.std(t0.real), ta, 2)
-        self.assertAlmostEqual(np.std(t0.imag), ta, 2)
+        self.assertAlmostEqual(np.std(t0.real), ta, 1)
+        self.assertAlmostEqual(np.std(t0.imag), ta, 1)
 
     def test_003_setup(self):
         chan = CoherentTimeVariantChannel(self._pdp, self._coherence)
@@ -79,11 +79,11 @@ class TimeVariantTests(unittest.TestCase):
         self.assertAlmostEqual(np.mean(se), 1.0, 2)
         self.assertGreaterEqual(np.std(se), .8)
         self.assertGreaterEqual(np.var(se), .7)
-        self.assertAlmostEqual(np.mean(t0.real), 0.0, 2)
-        self.assertAlmostEqual(np.mean(t0.imag), 0.0, 2)
+        self.assertAlmostEqual(np.mean(t0.real), 0.0, 1)
+        self.assertAlmostEqual(np.mean(t0.imag), 0.0, 1)
         ta = self._pdp.taps()[0].real * np.sqrt(1. / 2.)
-        self.assertAlmostEqual(np.std(t0.real), ta, 2)
-        self.assertAlmostEqual(np.std(t0.imag), ta, 2)
+        self.assertAlmostEqual(np.std(t0.real), ta, 1)
+        self.assertAlmostEqual(np.std(t0.imag), ta, 1)
 
 
 class FrequencyDomainChannelTests(unittest.TestCase):
