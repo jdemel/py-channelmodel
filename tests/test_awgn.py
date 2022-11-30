@@ -53,7 +53,7 @@ class AWGNTests(unittest.TestCase):
         self.assertAlmostEqual(
             calculate_average_signal_energy(noise), variance, 1)
 
-    def test_002_AWGN(self):
+    def test_003_AWGN(self):
         snrs = np.arange(-4., 11.)
         vec_len = 500000
         for s in snrs:
@@ -67,7 +67,7 @@ class AWGNTests(unittest.TestCase):
             # print(s, e, variance)
             self.assertTrue(np.abs(e - variance) < .05)
 
-    def test_003_FFT(self):
+    def test_004_FFT(self):
         snrs = np.arange(-4., 11., 3)
         vec_len = 2 ** 16
         subcarriers = 8

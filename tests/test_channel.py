@@ -9,8 +9,6 @@
 import numpy as np
 import unittest
 
-from .helpers import generate_random_qpsk, calculate_average_signal_energy
-
 from channelmodel.coherence import ChannelCoherenceRappaport
 from channelmodel.powerdelayprofile import PowerDelayProfile, FFTPowerDelayProfile
 from channelmodel.timevariantchannel import TimeVariantChannel
@@ -76,7 +74,7 @@ class TimeVariantTests(unittest.TestCase):
             e = np.sum(np.abs(t) ** 2)
             se[i] = e
             t0[i] = t[0]
-        self.assertAlmostEqual(np.mean(se), 1.0, 2)
+        self.assertAlmostEqual(np.mean(se), 1.0, 1)
         self.assertGreaterEqual(np.std(se), .8)
         self.assertGreaterEqual(np.var(se), .7)
         self.assertAlmostEqual(np.mean(t0.real), 0.0, 1)
@@ -148,11 +146,13 @@ class ChannelFactoryTests(unittest.TestCase):
                     state['rms_delay_spread'], self._rms_delay_spread)
                 self.assertAlmostEqual(
                     state['max_delay_spread'], self._max_delay_spread)
-                self.assertAlmostEqual(state['scale'], 1. / np.sqrt(1. * txa * rxa))
+                self.assertAlmostEqual(
+                    state['scale'], 1. / np.sqrt(1. * txa * rxa))
                 self.assertEqual(chan.tx_antennas(), txa)
                 self.assertEqual(chan.rx_antennas(), rxa)
                 self.assertEqual(chan.channel_dimensions(), (rxa, txa))
-                self.assertEqual(np.shape(chan.channel_taps())[0:2], (rxa, txa))
+                self.assertEqual(np.shape(chan.channel_taps())
+                                 [0:2], (rxa, txa))
 
     def test_002_normalization(self):
         for txa in range(1, 5):
