@@ -38,3 +38,12 @@ Homepage = "https://github.com/jdemel/py-channelmodel"
 
 [project.scripts]
 channelmodel = "channelmodel.__main__:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
