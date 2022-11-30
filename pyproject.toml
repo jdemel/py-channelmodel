@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "py-channelmodel"
-version = "1.0.1"
+version = "0.9.0"
 description = "A wireless communication channel model module for simulations."
 readme = "README.md"
 authors = [{ name = "Johannes Demel", email = "demel@ant.uni-bremen.de" }]
