@@ -7,3 +7,4 @@
 #
 
 from .channel import ChannelFactory
+from .converters import lin2db, db2lin, ebn0_to_sigma

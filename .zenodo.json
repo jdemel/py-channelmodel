@@ -16,18 +16,18 @@
             "scheme": "doi",
             "identifier": "10.30420/454862044",
             "relation": "isDocumentedBy",
-            "resource_type": "publication-article"
+            "resource_type": "publication-conferencepaper"
         },
         {
             "scheme": "doi",
             "identifier": "10.1109/VTC2020-Spring48590.2020.9129493",
             "relation": "isDocumentedBy",
-            "resource_type": "publication-article"
+            "resource_type": "publication-conferencepaper"
         },
         {
             "identifier": "https://ieeexplore.ieee.org/document/9097115",
             "relation": "isDocumentedBy",
-            "resource_type": "publication-article"
+            "resource_type": "publication-conferencepaper"
         }
     ],
     "creators": [
