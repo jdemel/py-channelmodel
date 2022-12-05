@@ -1,3 +1,6 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7382873.svg)](https://doi.org/10.5281/zenodo.7382873) [![Run py-channelmodel tests](https://github.com/jdemel/py-channelmodel/actions/workflows/run_tests.yml/badge.svg)](https://github.com/jdemel/py-channelmodel/actions/workflows/run_tests.yml)
+
+
 # py-channelmodel
 
 We need channel models in wireless communications research all the time. This module tries to provide a model with coherence, power delay profiles, Rayleigh fading, frequency selectivity, and MIMO.
@@ -14,12 +17,19 @@ Often, it is desirable to use `pip3 install --user ...`. Also, you need Python 3
 
 ## Usage
 
-```
+```python
 import channelmodel as channel
 
-channel = channel.ChannelFactory()
+channel_factory = channel.ChannelFactory(channel_domain="time",
+                                         channel_type="awgn",
+                                         effective_rate=1.0)
+
+channel = channel_factory.create(snr_db=3.0)
 
 # use the channel object
+tx = [1.+1.j, -1.-1.j]
+tx = np.array(tx) * np.sqrt(1. / 2.)  # SNR is defined with TX energy normalized to 1.!
+rx = channel.transmit(tx)
 ```
 
 ## Rationale
@@ -27,11 +37,12 @@ The intent of this module is to add a simple set of objects that one instantiate
 
 ### Supported models
 
-Obviously, this module supports AWGN channels. However, it does also support functions related to Power Delay Profiles, Channel coherence, Time domain channels, frequency domain channels for multicarrier simulations, etc.
+Obviously, this module supports AWGN channels. However, it does also support functions related to Rayleigh fading channels, Power Delay Profiles, Channel coherence, Time domain channels, frequency domain channels for multicarrier simulations, etc.
 
 
 ## Publications
-This module was developed during the research for multiple papers and thus use therein.
+This module was developed during the research for multiple papers and thus, it is used therein.
+You may cite this module via [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7382873.svg)](https://doi.org/10.5281/zenodo.7382873).
 
 * Demel et al. ["Industrial Radio Link Abstraction Models for Short Packet Communication with Polar Codes"](https://www.vde-verlag.de/proceedings-de/454862044.html), SCC, VDE, Rostock, Germany, February 2019, DOI: [10.30420/454862044](https://doi.org/10.30420/454862044)
 * Demel et al. ["Cloud-RAN Fronthaul Rate Reduction via IBM-based Quantization for Multicarrier Systems"](https://ieeexplore.ieee.org/document/9097115), WSA, VDE, Hamburg, Germany, February 2020
