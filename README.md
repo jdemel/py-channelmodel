@@ -7,12 +7,19 @@ We need channel models in wireless communications research all the time. This mo
 
 ## Installation
 
-The module is available on PyPI. Just run
+The module is available on [py-channelmodel on PyPI](https://pypi.org/project/py-channelmodel/). Just run
 
 ```
 pip3 install py-channelmodel
 ```
-Often, it is desirable to use `pip3 install --user ...`. Also, you need Python 3 for this module. Currently, the module is tested on Python 3.8.
+Often, it is desirable to use `pip3 install --user ...`. Also, you need Python 3 for this module. Currently, the module is tested on Python 3.7+.
+
+Furthermore, it is also available through [conda-forge py-channelmodel](https://anaconda.org/conda-forge/py-channelmodel). In that case, run
+
+```
+conda install -c conda-forge py-channelmodel
+```
+to install the module.
 
 
 ## Usage
@@ -27,8 +34,7 @@ channel_factory = channel.ChannelFactory(channel_domain="time",
 channel = channel_factory.create(snr_db=3.0)
 
 # use the channel object
-tx = [1.+1.j, -1.-1.j]
-tx = np.array(tx) * np.sqrt(1. / 2.)  # SNR is defined with TX energy normalized to 1.!
+tx = np.array([1.+1.j, -1.-1.j]) * np.sqrt(1. / 2.)  # by default SNR is defined with TX energy normalized to 1.!
 rx = channel.transmit(tx)
 ```
 
